@@ -1,0 +1,9 @@
+# Temel notebook bağımlılıkları
+# PyTorch/CUDA sürümünü sisteminize göre PyTorch'un resmi kurulum sayfasından seçmeniz önerilir.
+torch
+torch-geometric
+networkx
+numpy
+scipy
+matplotlib
+jupyter
