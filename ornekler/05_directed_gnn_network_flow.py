@@ -1,0 +1,1 @@
+# Ayrıntılı ve çalıştırılabilir notebook sürümü için:\n# notebooks/05_directed_gnn_network_flow.ipynb\n\nprint('Notebook: notebooks/05_directed_gnn_network_flow.ipynb')\n
