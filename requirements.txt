@@ -1,4 +1,4 @@
-# Temel notebook bağımlılıkları
+# Temel notebook ve solver-in-the-loop örnek bağımlılıkları
 # PyTorch/CUDA sürümünü sisteminize göre PyTorch'un resmi kurulum sayfasından seçmeniz önerilir.
 torch
 torch-geometric
@@ -7,3 +7,4 @@ numpy
 scipy
 matplotlib
 jupyter
+pyscipopt
