@@ -119,6 +119,36 @@ directed min-cost-flow network
 
 Bu örnekte yön bilgisi problem semantiğinin kendisidir: `u -> v` ve `v -> u` aynı karar değildir. Bu nedenle directed message passing yalnız mimari tercihi değil, graph temsilinin doğruluğuyla ilgili bir konudur.
 
+## 06 — Hypergraph GNN + Weighted Set Cover
+
+Dosya: `notebooks/06_hypergraph_gnn_set_cover.ipynb`
+
+Amaç:
+
+- Weighted Set Cover problemini doğal hypergraph incidence yapısıyla temsil etmek,
+- elemanları node, aday kümeleri hyperedge olarak modellemek,
+- full MILP optimumunda seçilen kümeleri eğitim etiketi olarak kullanmak,
+- PyTorch Geometric `HypergraphConv` ile hyperedge/set skoru üretmek,
+- GNN skorlarıyla candidate set pruning yapmak,
+- pruning sonrası coverage repair uygulamak,
+- küçültülmüş MILP'yi yeniden çözmek,
+- optimal-set recall, feasibility, objective gap, retained-set oranı ve solve time ölçmek,
+- yapı kullanmayan set-feature MLP ve cost/coverage heuristic ile karşılaştırmak.
+
+Temel fikir:
+
+```text
+weighted set cover
+ -> incidence hypergraph
+ -> full MILP optimal labels
+ -> HypergraphConv
+ -> candidate set screening
+ -> coverage repair
+ -> reduced MILP
+```
+
+Bu problemde hypergraph kullanımı yapay değildir: tek bir aday set, aynı anda birden fazla elemanı tek bir karar değişkeni üzerinden ilişkilendirir. Pairwise graph dönüşümü yapılabilir, ancak doğal higher-order incidence ilişkisi hypergraph gösteriminde doğrudan korunur.
+
 ## Önerilen öğrenme sırası
 
 ```text
@@ -131,12 +161,15 @@ Bu örnekte yön bilgisi problem semantiğinin kendisidir: `u -> v` ve `v -> u` 
 04 relational GNN + hybrid network-design optimization
    ↓
 05 directed GNN + network-flow candidate pruning
+   ↓
+06 hypergraph GNN + set-cover candidate screening
 ```
 
-Bu beş örnek birlikte GNN kullanımının beş farklı biçimini gösterir:
+Bu altı örnek birlikte GNN kullanımının altı farklı biçimini gösterir:
 
 1. doğrudan differentiable combinatorial objective,
 2. optimizasyon modelini graph olarak temsil etme,
 3. solver'ın arama kararını öğrenme,
 4. relational GNN ile karar uzayını küçültüp klasik MILP ile doğrulama,
-5. yönlü network yapısını koruyarak candidate arc filtering yapma.
+5. yönlü network yapısını koruyarak candidate arc filtering yapma,
+6. higher-order incidence yapısını hypergraph olarak koruyup candidate set screening yapma.
