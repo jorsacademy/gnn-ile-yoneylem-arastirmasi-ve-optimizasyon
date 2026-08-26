@@ -90,6 +90,35 @@ Buradaki kritik güvenlik prensibi:
 
 > GNN karar uzayını daraltmayı önerir; uygulanabilirlik ve nihai karar yine optimizasyon solver'ı tarafından doğrulanır.
 
+## 05 — Directed GNN + Min-Cost Flow
+
+Dosya: `notebooks/05_directed_gnn_network_flow.ipynb`
+
+Amaç:
+
+- yönlü min-cost-flow ağları üretmek,
+- full LP optimumunda kullanılan arc'ları eğitim etiketi yapmak,
+- graph'ı simetrize eden bir undirected GNN ile incoming/outgoing mesajları ayrı işleyen directed GNN'yi karşılaştırmak,
+- optimal-arc recall ölçmek,
+- GNN skorlarıyla candidate arc pruning yapmak,
+- infeasible pruning durumunda adaptive fallback uygulamak,
+- objective gap, retained-arc oranı ve çözüm süresini ölçmek,
+- cost-only heuristic ile karşılaştırmak.
+
+Temel fikir:
+
+```text
+directed min-cost-flow network
+ -> full LP
+ -> optimal arc labels
+ -> undirected GNN vs directed GNN
+ -> arc pruning
+ -> feasibility fallback
+ -> smaller LP
+```
+
+Bu örnekte yön bilgisi problem semantiğinin kendisidir: `u -> v` ve `v -> u` aynı karar değildir. Bu nedenle directed message passing yalnız mimari tercihi değil, graph temsilinin doğruluğuyla ilgili bir konudur.
+
 ## Önerilen öğrenme sırası
 
 ```text
@@ -100,11 +129,14 @@ Buradaki kritik güvenlik prensibi:
 03 solver-in-the-loop learned branching
    ↓
 04 relational GNN + hybrid network-design optimization
+   ↓
+05 directed GNN + network-flow candidate pruning
 ```
 
-Bu dört örnek birlikte GNN kullanımının dört farklı biçimini gösterir:
+Bu beş örnek birlikte GNN kullanımının beş farklı biçimini gösterir:
 
 1. doğrudan differentiable combinatorial objective,
 2. optimizasyon modelini graph olarak temsil etme,
 3. solver'ın arama kararını öğrenme,
-4. GNN ile karar uzayını küçültüp klasik MILP ile doğrulama.
+4. relational GNN ile karar uzayını küçültüp klasik MILP ile doğrulama,
+5. yönlü network yapısını koruyarak candidate arc filtering yapma.
