@@ -1,4 +1,4 @@
-# GNN ile Yoneylem Arastirmasi ve Optimizasyon
+# GNN ile Yöneylem Araştırması ve Optimizasyon
 
 <!-- portfolio-umbrella:start -->
 ## Portfolio role
