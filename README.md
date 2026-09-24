@@ -1,4 +1,10 @@
-# Graf Sinir Ağları ile Yöneylem Araştırması ve Optimizasyon
+# GNN ile Yoneylem Arastirmasi ve Optimizasyon
+
+<!-- portfolio-umbrella:start -->
+## Portfolio role
+
+This repository is intentionally maintained as a standalone primary repository in the consolidated Jors Academy portfolio. It is not used as a container for other projects.
+<!-- portfolio-umbrella:end -->
 
 > **Güncelleme:** Ağustos 2026  
 > Bu repo; Graf Sinir Ağlarının (Graph Neural Networks, GNN) yöneylem araştırması, endüstri mühendisliği ve optimizasyon problemlerinde nasıl kullanılabileceğini açıklayan Türkçe bir rehberdir.
