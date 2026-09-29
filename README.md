@@ -6,6 +6,10 @@
 This repository is intentionally maintained as a standalone primary repository in the consolidated Jors Academy portfolio. It is not used as a container for other projects.
 <!-- portfolio-umbrella:end -->
 
+## Dil sürümü
+
+Bu deponun diğer dil sürümü: [GNN for Industrial Engineering and OR Optimization](https://github.com/jorsacademy/gnn-for-industrial-engineering-and-or-optimization).
+
 > **Güncelleme:** Ağustos 2026  
 > Bu repo; Graf Sinir Ağlarının (Graph Neural Networks, GNN) yöneylem araştırması, endüstri mühendisliği ve optimizasyon problemlerinde nasıl kullanılabileceğini açıklayan Türkçe bir rehberdir.
 
